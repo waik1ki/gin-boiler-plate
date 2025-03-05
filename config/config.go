@@ -1,5 +1,7 @@
 package config
 
+import "os"
+
 type Config struct {
 	Driver string
 	DSN    string
@@ -7,7 +9,7 @@ type Config struct {
 
 func NewConfig() *Config {
 	driver := "postgres"
-	dsn := "host=localhost user=postgres password=1234 dbname=testdb port=5432 sslmode=disable"
+	dsn := os.Getenv("DSN")
 
 	return &Config{
 		Driver: driver,
